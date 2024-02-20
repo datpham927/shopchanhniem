@@ -31,7 +31,7 @@ const Sidebar = ({ setTab, tab }) => {
           onClick={() => {
             setTab(e?.code)
           }}
-          className={`flex gap-2 items-center text-sm cursor-pointer hover:text-[#FF8CA1] ${tab === e.code ? "text-[#FF8CA1]" : ""}`}
+          className={`flex gap-2 items-center text-sm cursor-pointer hover:text-[rgb(240,103,59)] ${tab === e.code ? "text-[rgb(240,103,59)] " : ""}`}
         >
           <span className='mobile:hidden'> {e?.name}</span>
         </li>
@@ -43,7 +43,7 @@ const Sidebar = ({ setTab, tab }) => {
               navigate('/login')
             }
           }}
-          className={`flex gap-2 items-center text-sm cursor-pointer hover:text-[#FF8CA1] `}
+          className={`flex gap-2 items-center text-sm cursor-pointer hover:text-[rgb(240,103,59)] `}
         >
           <img src={logoLogout} className='w-5'/>
           <span className='mobile:hidden'> Đăng xuất</span>

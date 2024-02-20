@@ -7,7 +7,7 @@ const ProductItem = ({ product,onClick }) => {
       <div className="flex my-2  rounded-2xl overflow-hidden">
         <img className="w-full h-full object-cover " src={product?.product_image} alt='' />
       </div>
-      <span className="truncate-trailing line-clamp-2 text-sm text-pink-500">{product?.product_title}</span>
+      <span className="truncate-trailing line-clamp-2 text-sm text-[rgb(240,103,59)]">{product?.product_title}</span>
     </a>
   )
 }
