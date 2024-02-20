@@ -1,4 +1,5 @@
 const Category = require("../models/Category")
+const Product = require("../models/Product")
 const autoCode = require("../utils/autoCode")
 
 
@@ -42,5 +43,52 @@ const getCategory = async (req, res) => {
 }
 
 
+const editCategory = async(req, res) => {
+    try {
+        const { _id } = req.body
+        if (!_id) {
+            return res.status(201).json({
+                success: false,
+            })
+        }
+        const response = await Category.findByIdAndUpdate(_id, {...req.body }, { new: true })
+        return res.status(201).json({
+            success: response ? true : false,
+            data: response ? response : null,
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
+const deleteCategory = async(req, res) => {
+    try {
+        const { id } = req.params
+        if (!id) {
+            return res.status(201).json({
+                success: false,
+            })
+        }
+        const foundProduct= await Product.find({category_code:id})
+        console.log(foundProduct);
+        if(foundProduct.length>0){
+            return res.status(201).json({
+                success: false,
+            })
+        }
+        const response = await Category.findByIdAndDelete(id)
+        return res.status(201).json({
+            success: response ? true : false,
+            message: response ? "Delete success!" : `Id:${req.params.pid} not exists!`,
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
 
-module.exports = { createCategory, getCategory }
+module.exports = { createCategory, getCategory ,editCategory,deleteCategory}

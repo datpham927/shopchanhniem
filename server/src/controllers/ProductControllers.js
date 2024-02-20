@@ -1,10 +1,10 @@
 const Product = require("../models/Product")
 
 
-const createProduct = async (req, res) => {
+const createProduct = async(req, res) => {
     try {
         const { product_title, product_image, product_link, category_code } = req.body
-        if (!product_title || !product_image || !product_link|| !category_code) {
+        if (!product_title || !product_image || !product_link || !category_code) {
             return res.status(400).json({
                 success: false,
             })
@@ -22,7 +22,7 @@ const createProduct = async (req, res) => {
     }
 }
 
-const editProduct = async (req, res) => {
+const editProduct = async(req, res) => {
     try {
         const { _id } = req.body
         if (!_id) {
@@ -30,7 +30,7 @@ const editProduct = async (req, res) => {
                 success: false,
             })
         }
-        const response = await Product.findByIdAndUpdate(_id, { ...req.body }, { new: true })
+        const response = await Product.findByIdAndUpdate(_id, {...req.body }, { new: true })
         return res.status(201).json({
             success: response ? true : false,
             data: response ? response : null,
@@ -42,15 +42,15 @@ const editProduct = async (req, res) => {
         })
     }
 }
-const deleteProduct = async (req, res) => {
+const deleteProduct = async(req, res) => {
     try {
-        const { _id } = req.body
-        if (!_id) {
+        const { pid } = req.params
+        if (!pid) {
             return res.status(400).json({
                 success: false,
             })
         }
-        const response = await Product.findByIdAndDelete(_id)
+        const response = await Product.findByIdAndDelete(pid)
         return res.status(201).json({
             success: response ? true : false,
             message: response ? "Delete success!" : `Id:${req.params.pid} not exists!`,
@@ -63,15 +63,18 @@ const deleteProduct = async (req, res) => {
     }
 }
 
+
 const getProduct = async (req, res) => {
     try {
         const { category_code } = req.query
-        if (!category_code) {
-            return res.status(400).json({
-                success: false,
-            })
+        let products;
+        if(category_code){
+             products = await Product.find({ category_code })
+
+        }else{
+        products = await Product.find()
+
         }
-        const products = await Product.find({ category_code })
         return res.status(201).json({
             success: products ? true : false,
             data: products ? products : null
@@ -83,7 +86,8 @@ const getProduct = async (req, res) => {
         })
     }
 }
-const updateView = async (req, res) => {
+// lượt click
+const updateView = async(req, res) => {
     try {
         const { pid } = req.params
         if (!pid) {

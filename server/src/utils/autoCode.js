@@ -1,7 +1,7 @@
 const slugify = require("slugify")
 
 const autoCode = (title) => {
-    const slug = Array.from(slugify(title, ""))
+    const slug = Array.from(slugify(title+'abc', ""))
     let code = "";
     for (let i = 2; i < 8; i++) {
         code += slug[slug?.length % i]

@@ -1,5 +1,6 @@
 export { default as logo } from "./logo.png"
 export { default as logoFb } from "./fb.png"
+export { default as logoZalo } from "./zalo.jpg"
 export { default as logoTiktokMobile } from "./logotiktok.png"
 export const LogoTiktok = (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 118 42" width="118" height="42" alt="TikTok"><path fill="#25F4EE" d="M9.875 16.842v-1.119A8.836 8.836 0 008.7 15.64c-4.797-.006-8.7 3.9-8.7 8.707a8.706 8.706 0 003.718 7.135A8.675 8.675 0 011.38 25.55c0-4.737 3.794-8.598 8.495-8.707z">

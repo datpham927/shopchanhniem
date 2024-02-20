@@ -11,7 +11,7 @@ const Sidebar = ({ categoryCode, setCategoryCode }) => {
       const res = await getCategory()
       if (!res?.success) return
       setCategories(res.data)
-      setCategoryCode(res.data[0].category_code)
+      setCategoryCode(res.data[0]?.category_code)
       setIsLoading(false)
     }
     fetchApi()
@@ -26,9 +26,9 @@ const Sidebar = ({ categoryCode, setCategoryCode }) => {
             {categories?.map(
               (c) => <li key={c?._id}
                 onClick={() => {
-                  setCategoryCode(c.category_code)
+                  setCategoryCode(c?.category_code)
                 }}
-                className={`flex gap-2  px-4 py-2 items-center text-sm cursor-pointer hover:text-[#FF8CA1] ${categoryCode === c.category_code ? "text-[rgb(255,102,196)] font-semibold bg-[rgb(249,208,232)]" : ""}`}
+                className={`flex gap-2  px-4 py-2 items-center text-sm cursor-pointer hover:text-[#FF8CA1] ${categoryCode === c?.category_code ? "text-[rgb(255,102,196)] font-semibold bg-[rgb(249,208,232)]" : ""}`}
               >
                 <div className='w-7 h-7 rounded-full overflow-hidden'>
                   <img className='w-full h-full object-cover' src={c?.category_thumbnail} alt='' />

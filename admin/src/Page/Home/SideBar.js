@@ -1,20 +1,30 @@
+import { logoLogout } from "../../assets";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({ setTab, tab }) => {
-
+    const navigate=useNavigate()
   const SIDEBAR = [
     {
-      name: "Thêm sản phầm",
+      name: "Thêm danh mục",
       code: 1
     }, {
-      name: "Thêm danh mục",
+      name: "Thêm sản phầm",
       code: 2
     }, {
-      name: "Tất cả sản phẩm",
+      name: "Danh sách sản phẩm",
       code: 3
+    },
+    {
+      name: "Danh sách danh mục",
+      code: 4
+    },
+    {
+      name: "Thông tin liên hệ",
+      code: 5
     }
   ]
   return (
-    <div className={`flex mobile:w-auto mobile:rounded-xl tablet:w-3/12  w-2/12 shrink-0 h-full  bg-white flex-col  gap-3 border-b-[1px] border-solid border-b-slate-200 shadow-cart py-6 px-2 }`}>
+    <div className={`flex  rounded-md mobile:w-auto mobile:rounded-xl tablet:w-3/12  w-2/12 shrink-0 h-full  bg-white flex-col  gap-3 border-b-[1px] border-solid border-b-slate-200 shadow-cart py-6 px-2 }`}>
       <ul className="flex flex-col gap-3 text-sm cursor-pointer">
 
         {SIDEBAR?.map(e => <li
@@ -26,6 +36,19 @@ const Sidebar = ({ setTab, tab }) => {
           <span className='mobile:hidden'> {e?.name}</span>
         </li>
         )}
+        <li
+          onClick={() => {
+            if(window.confirm('Bạn có muốn đăng xuất không?')){
+              localStorage.removeItem('userId');
+              navigate('/login')
+            }
+          }}
+          className={`flex gap-2 items-center text-sm cursor-pointer hover:text-[#FF8CA1] `}
+        >
+          <img src={logoLogout} className='w-5'/>
+          <span className='mobile:hidden'> Đăng xuất</span>
+        </li>
+
       </ul>
     </div >
   )
