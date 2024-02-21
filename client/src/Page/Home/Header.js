@@ -24,7 +24,7 @@ const Header = () => {
         {contact?.contact_facebook && <a className="flex mobile:hidden gap-2 items-center " target="_blank" href={contact?.contact_facebook} >
           <img className='h-8 rounded-md' src={logoFb} />
         </a>}
-        {contact?.contact_zalo && <a className="flex mobile:hidden gap-2 items-center " target="_blank" href={contact?.contact_zalo} >
+        {contact?.contact_zalo && <a className="flex mobile:hidden gap-2 items-center "target="_blank" href={  `https://zalo.me/${contact?.contact_zalo}`} >
           <img className='h-8 rounded-md' src={logoZalo} />
         </a>}
       </div>
