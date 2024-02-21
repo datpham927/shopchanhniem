@@ -20,9 +20,12 @@ export default function AlertDialog({setOpen,open,handlePlayMusic}) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
+        <DialogTitle id="alert-dialog-title">
+          {"Nghe một chút nhạc cho tâm hồn bình an!"}
+        </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Bạn có muốn nghe nhạc thiền không?
+          Nhạc thiền tịnh tâm an nhiên tự tại sẽ giúp xua tan đi những mệt mỏi, đau khổ, stress, những phiền lo trong tạm thời và có thể sẽ giúp bạn nghĩ thoáng hơn, lạc quan và có một hướng nhìn khác trong mọi vấn đề!
           </DialogContentText>
         </DialogContent>
         <DialogActions>
