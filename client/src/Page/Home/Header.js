@@ -8,23 +8,23 @@ const Header = () => {
 
   useEffect(() => {
     const fetchApi = async () => {
-        const res = await getContact()
-        console.log("res",res)
-        if (res.data?.length > 0) {
-          setContact(res.data[0])
-        }
+      const res = await getContact()
+      console.log("res", res)
+      if (res.data?.length > 0) {
+        setContact(res.data[0])
+      }
     }
     fetchApi()
-}, [])
+  }, [])
 
   return (
     <div className='flex shadow-md h-[70px] w-full shrink-0 items-center bg-gradient-to-r from-teal-200 to-pink-200 bg-center bg-no-repeat bg-cover bg-scroll overflow-hidden max-h-full px-6'>
 
-      <div className='w-4/12 flex gap-3 '>
-        {contact?.contact_facebook && <a className="flex mobile:hidden gap-2 items-center " target="_blank" href={contact?.contact_facebook} >
+      <div className='w-4/12 flex gap-3 mobile:hidden'>
+        {contact?.contact_facebook && <a className="flex  gap-2 items-center " target="_blank" href={contact?.contact_facebook} >
           <img className='h-8 rounded-md' src={logoFb} />
         </a>}
-        {contact?.contact_zalo && <a className="flex mobile:hidden gap-2 items-center "target="_blank" href={  `https://zalo.me/${contact?.contact_zalo}`} >
+        {contact?.contact_zalo && <a className="flex  gap-2 items-center " target="_blank" href={`https://zalo.me/${contact?.contact_zalo}`} >
           <img className='h-8 rounded-md' src={logoZalo} />
         </a>}
       </div>
