@@ -33,7 +33,7 @@ const Sidebar = ({ categoryCode, setCategoryCode }) => {
                 <div className='w-7 h-7 rounded-full overflow-hidden'>
                   <img className='w-full h-full object-cover' src={c?.category_thumbnail} alt='' />
                 </div>
-                <span className='mobile:hidden text-base'> {c?.category_name}</span>
+                <span className='mobile:hidden text-sm'> {c?.category_name}</span>
               </li>
             )}
           </ul> </>
