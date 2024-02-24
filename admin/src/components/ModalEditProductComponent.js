@@ -24,7 +24,8 @@ const ModalEditProductComponent = ({ handleClose, open, setProducts, product }) 
     React.useEffect(() => {
         setValueForm({
             product_title: product?.product_title,
-            product_link: product?.product_link
+            product_link: product?.product_link,
+            product_image: product?.product_image
         })
     }, [product])
     const handleSetValue = (key, value) => {
@@ -35,7 +36,7 @@ const ModalEditProductComponent = ({ handleClose, open, setProducts, product }) 
             alert("Nhập đầy đủ")
             return
         }
-        const res = await editProduct({ product_image: image?image:product?.product_image, ...valueForm, _id: product?._id })
+        const res = await editProduct({...valueForm, product_image: image?image:product?.product_image, _id: product?._id })
         if (!res.success) {
             alert('Thất bại!')
         } else {

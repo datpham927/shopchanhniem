@@ -25,6 +25,7 @@ const ModalEditCategoryComponent = ({ handleClose, open, setCategories, category
     React.useEffect(() => {
         setValueForm({
             category_name: category?.category_name,
+            category_thumbnail: category?.category_thumbnail,
         })
     }, [category])
     const handleSetValue = (key, value) => {
@@ -36,7 +37,8 @@ const ModalEditCategoryComponent = ({ handleClose, open, setCategories, category
             alert("Nhập đầy đủ")
             return
         }
-        const res = await editCategory({ category_thumbnail: image ? image : category?.category_thumbnail, ...valueForm, _id: category?._id })
+        console.log(image);
+        const res = await editCategory({ ...valueForm, _id: category?._id ,category_thumbnail: image ? image : category?.category_thumbnail})
         if (!res.success) {
             alert('Thất bại!')
         } else {
